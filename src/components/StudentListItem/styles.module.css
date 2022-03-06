@@ -1,0 +1,39 @@
+.studentDescription {
+  display: -webkit-box;
+  min-height: 75px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.cardBulmaContainer {
+  display: inline-block !important;
+  margin: 0.9em 0.9em;
+  width: 300px;
+  text-align: left;
+}
+
+#studentName {
+  width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skillContainer {
+  height: 85px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  /*display: -webkit-box;
+  min-height: 85px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;*/
+}
+
+.list {
+  line-height: 1.6em;
+  margin-top: 0.1em !important;
+}

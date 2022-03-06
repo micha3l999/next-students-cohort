@@ -1,5 +1,8 @@
 .studentsListContainer {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  text-align: center;
+}
+
+.navigation {
+  display: inline-block;
+  background-color: aquamarine;
 }
