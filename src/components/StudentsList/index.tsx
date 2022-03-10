@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
 import Config from "../../config";
 import Pagination from "../pagination";
 
-const StudentsList = () => {
+const StudentsList = (props: any) => {
   const [students, setStudents] = useState([{}]);
   const [lastEvaluatedKey, setLastEvaluatedKey] = useState();
   const [studentsCount, setStudentsCount] = useState(0);
@@ -48,14 +48,8 @@ const StudentsList = () => {
     } else {
       setLoading(true);
       const fromElement = currentPage * pageLimit - 12;
-      console.log("from" + fromElement);
-
       const toElement = currentPage * pageLimit;
-      console.log("to" + toElement);
-
       setStudents(totalStudents.current.slice(fromElement, toElement));
-      console.log(totalStudents.current.slice(fromElement, toElement));
-
       setLoading(false);
     }
   };

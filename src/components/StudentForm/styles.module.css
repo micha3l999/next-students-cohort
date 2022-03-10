@@ -1,11 +1,12 @@
 .successMessage {
-    color: green;
+  color: green;
 }
 
 .errorMessage {
-    color: darkred;
+  color: darkred;
 }
 
-.successMessage, .errorMessage {
-    margin-left: 0.5rem;
+.successMessage,
+.errorMessage {
+  margin-left: 0.5rem;
 }

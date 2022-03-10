@@ -4,6 +4,8 @@ import Image from "next/image";
 
 const StudentItem = (props: any) => {
   const student = props.student;
+  let currentdate = new Date();
+
   return (
     <>
       <div className={styles.cardBulmaContainer}>
@@ -11,7 +13,10 @@ const StudentItem = (props: any) => {
           <div className="card">
             <div className="card-image">
               <figure className="image is-2by1">
-                <img src={student.picture} alt="Placeholder image" />
+                <img
+                  src={student.picture + "?" + currentdate.toISOString()}
+                  alt="Placeholder image"
+                />
               </figure>
             </div>
             <div className="card-content">
@@ -37,7 +42,7 @@ const StudentItem = (props: any) => {
                 <div className={styles.skillContainer}>
                   Soft Skills:
                   <ul className={styles.list}>
-                    {student.soft_skills.map((skill: any) => (
+                    {student.soft_skills?.map((skill: any) => (
                       <li>{skill}</li>
                     ))}
                   </ul>
@@ -46,7 +51,7 @@ const StudentItem = (props: any) => {
                 <div className={styles.skillContainer}>
                   Tech Skills:
                   <ul className={styles.list}>
-                    {student.tech_skills.map((skill: any) => (
+                    {student.tech_skills?.map((skill: any) => (
                       <li>{skill}</li>
                     ))}
                   </ul>
