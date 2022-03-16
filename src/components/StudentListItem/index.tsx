@@ -12,7 +12,7 @@ const StudentItem = (props: any) => {
         <a href={`/student/${student.id}`}>
           <div className="card">
             <div className="card-image">
-              <figure className="image is-2by1">
+              <figure className={`image is-2by1 imageItem`}>
                 <img
                   src={student.picture + "?" + currentdate.toISOString()}
                   alt="Placeholder image"
