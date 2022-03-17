@@ -10,10 +10,11 @@ const StudentItem = (props: any) => {
     <>
       <div className={styles.cardBulmaContainer}>
         <a href={`/student/${student.id}`}>
-          <div className="card">
+          <div className={`card ${styles.myCard}`}>
             <div className="card-image">
-              <figure className={`image is-2by1 imageItem`}>
+              <figure className={`image ${styles.myImageContainer}`}>
                 <img
+                  className={styles.imageItem}
                   src={student.picture + "?" + currentdate.toISOString()}
                   alt="Placeholder image"
                 />
