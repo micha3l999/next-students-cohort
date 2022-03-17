@@ -22,7 +22,22 @@ const StudentForm = (props: StudentFormProp) => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    setStudent(props.student);
+    if (isNew) {
+      setStudent({
+        id: "",
+        first_name: "",
+        last_name: "",
+        description: "",
+        age: "",
+        work_experience: [""],
+        years_experience: [""],
+        tech_skills: [""],
+        soft_skills: [""],
+        observations: [""],
+      });
+    } else {
+      setStudent(props.student);
+    }
   }, [studentId]);
 
   const handleInputsValues = (event: any) => {
@@ -52,8 +67,16 @@ const StudentForm = (props: StudentFormProp) => {
 
     if (isNew) {
       console.log("Creating a new student...", student);
+      const workExperience = deleteEmptySpaces(student.work_experience);
+      const softSkills = deleteEmptySpaces(student.soft_skills);
+      const techSkills = deleteEmptySpaces(student.tech_skills);
       axios
-        .post(Config.studentsApi, student)
+        .post(Config.studentsApi, {
+          ...student,
+          ["work_experience"]: workExperience,
+          ["soft_skills"]: softSkills,
+          ["tech_skills"]: techSkills,
+        })
         .then((response) => {
           handleSetMessage("User created!");
           setStudent({
@@ -87,8 +110,6 @@ const StudentForm = (props: StudentFormProp) => {
       const workExperience = deleteEmptySpaces(student.work_experience);
       const softSkills = deleteEmptySpaces(student.soft_skills);
       const techSkills = deleteEmptySpaces(student.tech_skills);
-      console.log(student.tech_skills);
-      console.log(techSkills);
       setStudent({
         ...student,
         ["work_experience"]: workExperience,
@@ -258,7 +279,7 @@ const StudentForm = (props: StudentFormProp) => {
         <br />
         <StudentSkills
           key={"0"}
-          skillsProps={student?.work_experience ?? ["", ""]}
+          skillsProps={student?.work_experience ?? [""]}
           changeSkills={changeSkills}
           title={"Work experience"}
           type="work_experience"
@@ -266,7 +287,7 @@ const StudentForm = (props: StudentFormProp) => {
         <br />
         <StudentSkills
           key={"1"}
-          skillsProps={student?.soft_skills ?? ["", ""]}
+          skillsProps={student?.soft_skills ?? [""]}
           changeSkills={changeSkills}
           title={"Soft skills"}
           type="soft_skills"
@@ -274,7 +295,7 @@ const StudentForm = (props: StudentFormProp) => {
         <br></br>
         <StudentSkills
           key={"2"}
-          skillsProps={student?.tech_skills ?? ["", ""]}
+          skillsProps={student?.tech_skills ?? [""]}
           changeSkills={changeSkills}
           title={"Tech skills"}
           type="tech_skills"
